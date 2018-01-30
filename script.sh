@@ -37,6 +37,7 @@ do
         Dernier commit et message de la branche : $branch
         "
         #git log $branch
+        git checkout "$branch"
         git log --oneline -1 --pretty=format:"                  %s
                 %H"
         #head -n 1 $branch
