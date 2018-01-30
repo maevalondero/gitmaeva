@@ -36,8 +36,9 @@ do
         Dernier commit et message de la branche : $branch
         "
         # Changement de branche
-        git checkout "$branch"
+        git checkout "$branch" 2>/dev/null
         # Affichage des informations
         git log --oneline -1 --pretty=format:"                  %s
                 %H"
+        git checkout master
 done
