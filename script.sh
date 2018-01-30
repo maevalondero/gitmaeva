@@ -29,39 +29,15 @@ var=$(git branch | tr '*' ' ')
 echo "Voici la liste des branches"
 git branch
 echo "-------------------------"
-i=0
-tableau=
+# Boucle for qui dispose les branches en liste
 for branch in $var
 do
         echo "
         Dernier commit et message de la branche : $branch
         "
-        #git log $branch
+        # Changement de branche
         git checkout "$branch"
+        # Affichage des informations
         git log --oneline -1 --pretty=format:"                  %s
                 %H"
-        #head -n 1 $branch
-
 done
-#echo $branch
-
-
-
-#tableau=($branch)
-#read
-
-#tableau="
-#test
-#test
-#test"
-
-#while [i >  ]
-#readarray < <(echo "tableau")
-#echo "${lignes[i]}"
-
-
-echo
-
-echo
-
-
