@@ -14,26 +14,51 @@
 # - En fin de script mettre un truc qui dit que tous les dépots git ont été "analysés"
 
 
-
-affichage()
+#Nettoyer l'indentation
+function affichage
 {
+        var=$(git branch | tr '*' ' ')
+
         for branch in $var
                 do
-                        echo "
-                        Dernier commit et message de la branche : $branch
-                        "
+                        echo "Dernier commit et message de la branche : $branch
+"
                         # Changement de branche
                         git checkout "$branch" &> /dev/null
                         # Affichage des informations
-                        git log --oneline -1 --pretty=format:"                  %s
-                                %H"
+                        git log --oneline -1 --pretty=format:"%s
+%H
+
+"
         done
 }
+#Il doit sexecuter si meme si c'est un dossier git
+#Rajouter des couleurs
+folders=$(ls -d1 */)
 
+for folder in $folders
+do
+        cd $folder
+        echo "Dépot : $folder
+        "
+
+        if [ -d ".git" ]
+        then
+                affichage
+        else
+                echo " Ceci n'est pas un dépot git"
+        fi
+
+        cd ..
+done
+
+echo " 
+
+Tous les dépots git ont été analysés"
 
 # - lister les dossiers qui se trouve là où le script se trouve 
 
-var2=$(ls | tr '$var' ' ')
+#var2=$(ls | tr '$var' ' ')
 #condition qui dispose le ls en liste
 
 #deplacement()
@@ -52,23 +77,22 @@ var2=$(ls | tr '$var' ' ')
 
 
 
-if [ -d ".git" ]
-then
-var=$(git branch | tr '*' ' ')
-        echo "Voici la liste des branches"
-        git branch
-        echo "-------------------------"
-	for liste in $var2
-		do
-			echo " $liste"
-			cd $liste
-			affichage $var
-			cd ..
-	done
-affichage $var
-        
-else
-        echo "Le script ne se trouve pas dans un depot git"
-
-fi
-echo "Tous les fichiers ont été analysés"
+#if [ -d ".git" ]
+#then
+#var=$(git branch | tr '*' ' ')
+#        echo "Voici la liste des branches"
+#git branch
+#        echo "-------------------------"
+#	for liste in $var2
+#		do
+#			echo " $liste"
+#			cd $liste
+#			affichage $var
+#			cd ..
+#	done
+#affichage $var
+#else
+#        echo "Le script ne se trouve pas dans un depot git"
+#
+#fi
+#echo "Tous les fichiers ont été analysés"
