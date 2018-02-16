@@ -15,7 +15,6 @@
 
 
 
-
 affichage()
 {
         for branch in $var
@@ -32,33 +31,42 @@ affichage()
 }
 
 
-echo "------------------------------"
+# - lister les dossiers qui se trouve là où le script se trouve 
 
-var=$(git branch | tr '*' ' ') #Ne va pas fonctionner car à ce moment le script ne se trouve pas dans un dépot git
-
-#condition qui verifie que c'est bien un dépot git // il faudrait faire ça après, là pour l'instant le script n'est pas dans un dépot git (donc le if plante)
-i
-
-#mettre le ls en liste
-var2=$(git branch | tr '$var' ' ')
+var2=$(ls | tr '$var' ' ')
 #condition qui dispose le ls en liste
-for liste in $var2
-        do
-                echo " $liste"
-                cd $liste
-                affichage $var2
-                cd ..
-done
-echo "-------------------------------------"
-affichage $var2
+
+#deplacement()
+#{
+#		for liste in $var2
+#				do
+#						echo " $liste"
+#						cd $liste
+#						affichage $var
+#						cd ..
+#		done
+#}
+# var2 = variable de la liste de dossier
+
+
+
+
 
 if [ -d ".git" ]
 then
+var=$(git branch | tr '*' ' ')
         echo "Voici la liste des branches"
         git branch
         echo "-------------------------"
-        affichage $var
-# Boucle for qui dispose les branches en liste
+	for liste in $var2
+		do
+			echo " $liste"
+			cd $liste
+			affichage $var
+			cd ..
+	done
+affichage $var
+        
 else
         echo "Le script ne se trouve pas dans un depot git"
 
