@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -v
 
 fonction1()
 {
@@ -32,3 +32,16 @@ else
         echo "LE script ne se rouve pas dans un depot git"
 
 fi
+var2=$(git branch | tr '$var' ' ')
+#Boucle qui dispose le ls en liste
+for liste in $var2
+        do
+                echo " $liste"
+done
+echo "-------------------------------------"
+echo "test"
+#while [];
+cd $liste
+fonction1 $var2
+
+
