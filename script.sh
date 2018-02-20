@@ -15,9 +15,6 @@
 
 # LISTE DE COULEURS DEJA CRÉES PAR DES UTILISATEURS
 
-noir='\e[0;30m' gris='\e[1;30m' rougefonce='\e[0;31m' rose='\e[1;31m' vertfonce='\e[0;32m' vertclair='\e[1;32m' orange='\e[0;33m' jaune='\e[1;33m' bleufonce='\e[0;34m' bleuclair='\e[1;34m' violetfonce='\e[0;35m' violetclair='\e[1;35m' cyanfonce='\e[0;36m' cyanclair='\e[1;36m' grisclair='\e[0;37m' blanc='\e[1;37m' neutre='\e[0;m'
-
-
 #Nettoyer l'indentation
 function affichage
 {
@@ -36,8 +33,7 @@ function affichage
 "
         done
 }
-#Il doit sexecuter si meme si c'est un dossier git
-#Rajouter des couleurs
+
 if [  -d ".git" ]
 then
         affichage
@@ -65,43 +61,3 @@ echo "
 
 Tous les dépots git ont été analysés"
 fi
-# - lister les dossiers qui se trouve là où le script se trouve 
-
-#var2=$(ls | tr '$var' ' ')
-#condition qui dispose le ls en liste
-
-#deplacement()
-#{
-#		for liste in $var2
-#				do
-#						echo " $liste"
-#						cd $liste
-#						affichage $var
-#						cd ..
-#		done
-#}
-# var2 = variable de la liste de dossier
-
-
-
-
-
-#if [ -d ".git" ]
-#then
-#var=$(git branch | tr '*' ' ')
-#        echo "Voici la liste des branches"
-#git branch
-#        echo "-------------------------"
-#	for liste in $var2
-#		do
-#			echo " $liste"
-#			cd $liste
-#			affichage $var
-#			cd ..
-#	done
-#affichage $var
-#else
-#        echo "Le script ne se trouve pas dans un depot git"
-#
-#fi
-#echo "Tous les fichiers ont été analysés"
