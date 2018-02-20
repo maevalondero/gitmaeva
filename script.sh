@@ -22,7 +22,7 @@ function affichage
 
         for branch in $var
                 do
-                        echo -e "\033[1mDernier commit et message de la branche : $branch\033[0m
+                        echo -e "\033[35mDernier commit et message de la branche : $branch\033[0m
 "
                         # Changement de branche
                         git checkout "$branch" &> /dev/null
@@ -44,7 +44,7 @@ folders=$(ls -d1 */)
 for folder in $folders
 do
         cd $folder
-        echo -e "Dépot : $folder
+        echo -e "\033[33mDépot : \033[00m $folder
         "
 
         if [ -d ".git" ]
@@ -57,7 +57,8 @@ do
         cd ..
 done
 
-echo " 
+echo -e " 
 
-Tous les dépots git ont été analysés"
+\033[32mTous les dépots git on été analysés\033[00m"
 fi
+
